@@ -63,6 +63,31 @@ CONKY_HEIGHT = 300
 FEED_FONT = 'DejaVu Sans:size=8'
 ```
 
+## TSV List population script
+A small bash script to populate the TSV file with the required information using curl or any other mechanism to retrieve the RSS feed information from the provided URL, that uses `curl` and `sed` to extract the relevant information from the RSS feed and append it to the TSV file:
+```
+#!/bin/bash
+
+# Check if URL is provided
+if [ -z "$1" ]; then
+  echo "Please provide a valid URL"
+  exit 1
+fi
+
+# Retrieve RSS feed using curl and extract relevant information
+RSS_FEED=$(curl -s "$1")
+TITLE=$(echo "$RSS_FEED" | sed -n 's/.*<title>\(.*\)<\/title>.*/\1/ip;T;q')
+DESCRIPTION=$(echo "$RSS_FEED" | sed -n 's/.*<description>\(.*\)<\/description>.*/\1/ip;T;q')
+
+# Append information to TSV file
+echo -e "${1}\t${TITLE}\t${DESCRIPTION}" >> feeds.tsv
+
+# Print success message
+echo "RSS feed information for ${1} has been added to feeds.tsv"
+```
+
+> This script has been provided in this repository and I am considering integrating its mechanism into the python script itself. Stay tuned!
+
 ## License
 
 These files released under the [MIT License](LICENSE).
