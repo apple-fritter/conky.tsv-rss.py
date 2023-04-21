@@ -1,4 +1,4 @@
-# conky-tsv-rss
+# conky-rss-tsv
 Python script for integrating `RSS` feeds into a `Conky` window:
 
 1. Reads in a `TSV` file containing feed information, where each row represents a single feed item and each column contains the relevant information such as the `URL`, `title`, and `metadata`.
