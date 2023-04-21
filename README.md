@@ -25,6 +25,44 @@ The script may not be suitable for users who require a more advanced or flexible
 
 >Finally, as with any script, it's important to be mindful of security considerations. Ensure that the TSV file and any external resources, **such as the RSS feeds themselves**, are trustworthy and do not pose a security risk.
 
+Usage
+Prerequisites
+Before using the script, ensure that the following packages are installed:
+```
+feedparser
+beautifulsoup4
+```
+You can install these packages using the following command:
+```
+pip install feedparser beautifulsoup4
+```
+
+## Configuration
+Create a TSV file containing the feed information. The TSV file should have the following format:
+```
+URL<TAB>Title<TAB>Metadata
+```
+
+For example:
+```
+https://rss.nytimes.com/services/xml/rss/nyt/World.xml  New York Times World News
+https://www.npr.org/rss/rss.php?id=1001  NPR Top Stories
+https://www.reddit.com/r/worldnews/.rss  Reddit World News
+```
+
+Note that each row represents a single feed item, and each column contains the relevant information. The Title and Metadata columns are optional.
+
+In the conky-rss-tsv.py script, modify the following variables to match your configuration:
+```
+TSV_FILE = 'feeds.tsv'
+NUM_FEEDS = 3
+NUM_ITEMS_PER_FEED = 5
+FEED_REFRESH_TIME = 300
+CONKY_WIDTH = 600
+CONKY_HEIGHT = 300
+FEED_FONT = 'DejaVu Sans:size=8'
+```
+
 ## License
 
 These files released under the [MIT License](LICENSE).
