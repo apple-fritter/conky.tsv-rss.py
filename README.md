@@ -24,8 +24,8 @@ The script may not be suitable for users who require a more advanced or flexible
 
 >Finally, as with any script, it's important to be mindful of security considerations. Ensure that the TSV file and any external resources, **such as the RSS feeds themselves**, are trustworthy and do not pose a security risk.
 
-Usage
-Prerequisites
+## Usage
+### Prerequisites
 Before using the script, ensure that the following packages are installed:
 ```
 feedparser
@@ -36,7 +36,7 @@ You can install these packages using the following command:
 pip install feedparser beautifulsoup4
 ```
 
-## Configuration
+### Configuration
 Create a TSV file containing the feed information. The TSV file should have the following format:
 ```
 URL<TAB>Title<TAB>Metadata
